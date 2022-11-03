@@ -13,10 +13,10 @@
         $password = $db->encode($_POST['password']);['password'];
         $tel = $_POST['tel'];
 
-        $check = $db->select_where("tb_users","firstname = '$firstname'");
+        $check = $db->select_where("tb_members","firstname = '$firstname'");
         if($check->num_rows == 0)
         {
-            $insert = $db->insert("tb_users","firstname,lastname,department,email,password,tel","'$firstname','$lastname','$department','$email','$password','$tel'");
+            $insert = $db->insert("tb_members","firstname,lastname,department,email,password,tel","'$firstname','$lastname','$department','$email','$password','$tel'");
             if($insert)
             {
                 $db->alert("สมัครสมาชิกเสร็จสิ้น!");
@@ -69,7 +69,7 @@
                                     required>
                             </div>
                             <div class="form-group">
-                                <input id="password-field" id="password" name="password" pattern=".{12,}"
+                                <input id="password-field" id="password" name="password" pattern=".{8,}"
                                     type="password" class="form-control" placeholder="รหัสผ่าน" required>
                             </div>
                             <div class="form-group">

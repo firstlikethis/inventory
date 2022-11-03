@@ -6,7 +6,7 @@
         private $ip = "localhost";
         private $user = "root";
         private $pass = "";
-        private $db = "inventory";
+        private $db = "inven";
 
         public $conn;
 
@@ -27,7 +27,7 @@
         }
         public function select_where($table,$id)
         {
-            $sql = "SELECT * FROM $table WHERe $id";
+            $sql = "SELECT * FROM $table WHERE $id";
             return $this->conn->query($sql);
         }
         public function select_join($table,$table2,$value)

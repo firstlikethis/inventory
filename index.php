@@ -25,11 +25,11 @@
             $db->alert("เข้าสู่ระบบเสร็จสิ้น!");
             if($user['status'] == "admin")
             {
-                $db->header(".../modules/admin/admin_panel.php");
+                $db->header("./admin_dashboard/admin_panel.php");
             }
             else
             {
-                $db->header(".../modules/admin/admin_panel.php");
+                $db->header("./low_levels/user.php");
             }
             $db->update("tb_members","ip='$ip',login_last='$date'","id_member = '$id_member'");
         }

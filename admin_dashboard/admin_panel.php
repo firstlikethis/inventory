@@ -2,11 +2,8 @@
     require('../controller/config.php');
     $db = new db;
     $db->admin_empty();
-    
-    
     include('./admin_includes/head.php');
 ?>
-
 
 <body class="bg-theme bg-theme1">
     <?php 
@@ -17,7 +14,6 @@
     <div class="clearfix">
         <div class="content-wrapper">
             <div class="container-fluid">
-
                 <!--Start Dashboard Content-->
                 <?php
                   include('./admin_includes/content1.php');
@@ -32,5 +28,4 @@
     </div>
     <!--End wrapper-->
 </body>
-
 </html>

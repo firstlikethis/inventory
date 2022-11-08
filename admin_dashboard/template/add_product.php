@@ -5,27 +5,27 @@
 
     if(isset($_POST['add']))
     {
-        $name_product = $_POST['name_product'];
-        $serial_number = $_POST['serial_number'];
-        $ip_address = $_POST['ip_address'];
-        $mac_address = $_POST['mac_address'];
-        $boxlan = $_POST['boxlan'];
-        $departments = $_POST['departments'];
-        $name_user = $_POST['name_user'];
-        $floors = $_POST['floors'];
-        $remark = $_POST['remark'];
+        $np= $_POST['name_product'];
+        $sn= $_POST['serial_number'];
+        $ip= $_POST['ip_address'];
+        $mc= $_POST['mac_address'];
+        $bl= $_POST['boxlan'];
+        $dm= $_POST['departments'];
+        $nu= $_POST['name_users'];
+        $fl= $_POST['floors'];
+        $rm= $_POST['remark'];
         
-    
-        $insert = $db->insert('tb_products','name_product,serial_number,ip_address,mac_address,boxlan,departments,name_user,floors,remark,',"'$name_product','$serial_number','$ip_address','$mac_address','$boxlan','$departments','$name_user','$floors,'$remark'");
-        if($insert)
+        // ('tb_products','name_product','serial_number','ip_address','mac_address','boxlan','departments','name_users','floors','remark',"'$np','$sn','$ip','$mc','$bl','$dm','$nu','$fl','$rm'")
+        $insert = $db->insert('tb_product','name_product','serial_number','ip_address','mac_address','boxlan','departments','name_users','floors','remark',"'$np','$sn','$ip','$mc','$bl','$dm','$nu','$fl','$rm'");
+        if($insert)        
         {
             $db->alert('เพิ่มรายการสินค้าสำเร็จ');
-            $db->header('../../add_product.php');
+            $db->header('add_product.php');
         }
         else
         {
             $db->alert('เกิดข้อผิดพลาดในการเพิ่มรายการสินค้า!');
-            $db->header('../../add_product.php');
+            $db->header('add_product.php');
         }
         
     }
@@ -111,7 +111,7 @@
                                         placeholder="ชื่อผู้ใช้งาน">
                                 </div>
                                 <div class="form-group">
-                                    <label for="floors">ชี้น</label>
+                                    <label for="floors">ชั้น</label>
                                     <input type="text" class="form-control" id="floors" name="floors"
                                         placeholder="ใส่ชั้น">
                                 </div>
@@ -121,11 +121,10 @@
                                         placeholder="เพิ่มหมายเหตุ">
                                 </div>
 
-                                <hr>    
+                                <hr>
                                 <div class="form-group">
-
-                                        <input type="submit" value="เพิ่มครุภัณฑ์" name="add" id="add" onclick="return confirm('ต้องการเพิ่มรายการสินค้าใช่ หรือ ไม่')" class="btn btn-light px-5">
-                                        
+                                    <button type="submit" name="add" id="add" class="btn btn-light btn-round px-5"><i
+                                            class="icon-lock"></i> Register</button>
                                     <a href="../../admin_dashboard/admin_panel.php"
                                         class="btn btn-light px-5">กลับหน้าหลัก</a>
 

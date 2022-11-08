@@ -1,9 +1,7 @@
 <div class="row">
     <div class="col-12 col-lg-12">
         <div class="card">
-
-
-
+            
             <div class="card-header text-center">Product
                 <div class="card-action">
                     <div class="dropdown">

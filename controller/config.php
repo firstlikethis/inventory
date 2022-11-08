@@ -6,7 +6,7 @@
         private $ip = "localhost";
         private $user = "root";
         private $pass = "";
-        private $db = "inven";
+        private $db = "tb";
 
         public $conn;
 

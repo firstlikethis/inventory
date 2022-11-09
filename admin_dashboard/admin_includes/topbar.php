@@ -7,9 +7,18 @@
        <i class="icon-menu menu-icon"></i>
      </a>
     </li>
+
+    <?php
+      if (!empty($_GET['search'])) {
+        $search = $_GET['search'];
+        $se_product = $db->select_where('tb_product', "name_product LIKE '%$search%'");
+    } else {
+        $se_product = $db->select('tb_product');
+    }
+    ?>
     <li class="nav-item">
-      <form class="search-bar">
-        <input type="text" class="form-control" placeholder="Enter keywords">
+      <form class="search-bar" method="GET">
+        <input type="text" class="form-control" id="search" name="search" placeholder="Enter keywords">
          <a href="javascript:void();"><i class="icon-magnifier"></i></a>
       </form>
     </li>

@@ -1,17 +1,14 @@
 <div class="row">
     <div class="col-12 col-lg-12">
         <div class="card">
-            
             <div class="card-header text-center">Product
                 <div class="card-action">
                     <div class="dropdown">
-                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
-                            data-toggle="dropdown">
+                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                             <i class="icon-options"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="./template/add_product.php">Add new</a>
-                            <a class="dropdown-item" href="javascript:void();">Another action</a>
+                            <a class="dropdown-item" href="./template/add_product.php">Add New</a>
                             <a class="dropdown-item" href="javascript:void();">Something else here</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="javascript:void();">Separated link</a>
@@ -20,12 +17,8 @@
                 </div>
             </div>
 
-
-
-
             <div class="table-responsive">
                 <table class="table align-items-center table-flush table-borderless">
-
                     <thead>
                         <tr>
                             <th>Com Name</th>
@@ -37,95 +30,30 @@
                             <th>User</th>
                             <th>Floor</th>
                             <th>Remark</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-
-
-                    <tbody>
-                        <tr>
-                            <td>Iphone 5</td>
-                            <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img">
-                            </td>
-                            <td>#9405822</td>
-                            <td>$ 1250.00</td>
-                            <td>03 Aug 2017</td>
+                    <?php
+                    while ($product = $se_product->fetch_assoc()) {
+                        $idm = $product['id_products'];
+                    ?>
+                        <tr class="text-center">
+                            <td><?php echo $product['name_product']; ?></td>
+                            <td><?php echo $product['serial_number']; ?></td>
+                            <td><?php echo $product['ip_address']; ?></td>
+                            <td><?php echo $product['mac_address']; ?></td>
+                            <td><?php echo $product['boxlan']; ?></td>
+                            <td><?php echo $product['departments']; ?></td>
+                            <td><?php echo $product['name_users']; ?></td>
+                            <td><?php echo $product['floors']; ?></td>
+                            <td><?php echo $product['remark']; ?></td>
                             <td>
-                                <div class="progress shadow" style="height: 3px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 90%"></div>
-                                </div>
+                                <a href="./template/edit_product.php?id=<?php echo $product['id_products']; ?>" class="btn btn-light btn-round px-1">แก้ไขครุภัณฑ์</a>
                             </td>
                         </tr>
-
-                        <tr>
-                            <td>Earphone GL</td>
-                            <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img">
-                            </td>
-                            <td>#9405820</td>
-                            <td>$ 1500.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 3px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 60%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>HD Hand Camera</td>
-                            <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img">
-                            </td>
-                            <td>#9405830</td>
-                            <td>$ 1400.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 3px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 70%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Clasic Shoes</td>
-                            <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img">
-                            </td>
-                            <td>#9405825</td>
-                            <td>$ 1200.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 3px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Hand Watch</td>
-                            <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img">
-                            </td>
-                            <td>#9405840</td>
-                            <td>$ 1800.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 3px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 40%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Clasic Shoes</td>
-                            <td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img">
-                            </td>
-                            <td>#9405825</td>
-                            <td>$ 1200.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 3px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
+                    <?php
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>

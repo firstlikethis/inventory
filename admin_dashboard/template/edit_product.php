@@ -1,34 +1,48 @@
 <?php
-require('../../controller/config.php');
-$db = new db;
-$db->admin_empty();
-
-
-if (isset($_POST['submit'])) {
-    $name_product = $_POST['name_product'];
-    $serial_number = $_POST['serial_number'];
-    $ip_address = $_POST['ip_address'];
-    $mac_address = $_POST['mac_address'];
-    $boxlan = $_POST['boxlan'];
-    $departments = $_POST['departments'];
-    $name_users = $_POST['name_users'];
-    $floors = $_POST['floors'];
-    $remark = $_POST['remark'];
-
-    $check = $db->select_where("tb_product", "name_product = '$name_product'");
-    if ($check->num_rows == 0) {
-        $insert = $db->insert("tb_product","name_product,serial_number,ip_address,mac_address,boxlan,departments,name_users,floors,remark","'$name_product','$serial_number','$ip_address','$mac_address','$boxlan','$departments','$name_users','$floors','$remark'");
-        if ($insert) {
-            $db->alert("สมัครสมาชิกเสร็จสิ้น!");
-            $db->header("add_product.php");
-        } else {
-            $db->alert("เกิดข้อผิดพลาดในการสมัครสมาชิก!");
-            $db->header("add_product.php");
-        }
-    } else {
-        $db->alert("ชื่อผู้ใช้ ถูกใช้งานแล้ว!");
+    require('../../controller/config.php');
+    $db = new db;
+    $db->admin_empty();
+    if(empty($_GET['id']))
+    {
+        $db->header2("./edit_product.php");
     }
-}
+
+    if(isset($_POST['submit']))
+    {
+        $name_product = $_POST['name_product'];
+        $serial_number = $_POST['serial_number'];
+        $ip_address = $_POST['ip_address'];
+        $mac_address = $_POST['mac_address'];
+        $boxlan = $_POST['boxlan'];
+        $departments = $_POST['departments'];
+        $name_users = $_POST['name_users'];
+        $floors = $_POST['floors'];
+        $remark = $_POST['remark'];
+        $id = $_GET['id'];
+        
+        $check = $db->select_where("tb_product", "name_product = '$name_product'");
+        if ($check->num_rows == 0) {
+            $insert = $db->update('tb_product',"name_product='$name_product',serial_number='$serial_number',ip_address='$ip_address',mac_address='$mac_address',boxlan='$boxlan',departments='$departments',name_users='$name_users',floors='$floors',remark='$remark'","id_products='$id'");
+            if($insert)
+            {
+                $db->alert('แก้ไขรายการครุภัณฑ์สำเร็จ');
+                $db->header('../admin_panel.php');
+            }
+            else
+            {
+                $db->alert('เกิดข้อผิดพลาดในการแก้ไขรายการครุภัณฑ์!');
+                $db->header('edit_product.php');
+            }
+        }else
+        {
+            $db->alert('คอลัมน์ซ้ำบางรายการ');
+        }
+    }
+
+    $id = $_GET['id'];
+    $se_product = $db->select_where('tb_product',"id_products = '$id'");
+    $product = $se_product->fetch_assoc();
+    
 ?>
 
 <!DOCTYPE html>
@@ -78,47 +92,47 @@ if (isset($_POST['submit'])) {
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="name_product">ชื่อคอมฯ</label>
-                                    <input type="text" class="form-control" id="name_product" name="name_product"
+                                    <input type="text" class="form-control" id="name_product" value="<?php echo $product['name_product'];?>" name="name_product" 
                                         placeholder="ใส่ชื่อคอมฯ">
                                 </div>
                                 <div class="form-group">
                                     <label for="serial_number">Serial Number</label>
-                                    <input type="text" class="form-control" id="serial_number" name="serial_number"
+                                    <input type="text" class="form-control" value="<?php echo $product['serial_number'];?>" id="serial_number" name="serial_number"
                                         placeholder="ใส่ Serial Number">
                                 </div>
                                 <div class="form-group">
                                     <label for="ip_address">IP Address</label>
-                                    <input type="text" class="form-control" id="ip_address" name="ip_address"
+                                    <input type="text" class="form-control" value="<?php echo $product['ip_address'];?>" id="ip_address" name="ip_address"
                                         placeholder="ใส่ IP Address">
                                 </div>
                                 <div class="form-group">
                                     <label for="mac_address">Mac Address</label>
-                                    <input type="text" class="form-control" id="mac_address" name="mac_address"
+                                    <input type="text" class="form-control" value="<?php echo $product['mac_address'];?>" id="mac_address" name="mac_address"
                                         placeholder="ใส่ Mac Address">
                                 </div>
                                 <div class="form-group">
                                     <label for="boxlan">boxlan</label>
-                                    <input type="text" class="form-control" name="boxlan" id="boxlan"
+                                    <input type="text" class="form-control" value="<?php echo $product['boxlan'];?>" name="boxlan" id="boxlan"
                                         placeholder="ใส่ BOX LAN">
                                 </div>
                                 <div class="form-group">
                                     <label for="departments">ฝ่ายงาน</label>
-                                    <input type="text" class="form-control" id="departments" name="departments"
+                                    <input type="text" class="form-control" value="<?php echo $product['departments'];?>" id="departments" name="departments"
                                         placeholder="ใส่ชื่อฝ่ายงาน">
                                 </div>
                                 <div class="form-group">
                                     <label for="name_users">ชื่อผู้ใช้งาน</label>
-                                    <input type="text" class="form-control" id="name_users" name="name_users"
+                                    <input type="text" class="form-control" value="<?php echo $product['name_users'];?>" id="name_users" name="name_users"
                                         placeholder="ชื่อผู้ใช้งาน">
                                 </div>
                                 <div class="form-group">
                                     <label for="floors">ชั้น</label>
-                                    <input type="text" class="form-control" id="floors" name="floors"
+                                    <input type="text" class="form-control" value="<?php echo $product['floors'];?>" id="floors" name="floors"
                                         placeholder="ใส่ชั้น">
                                 </div>
                                 <div class="form-group">
                                     <label for="remark">หมายเหตุ</label>
-                                    <input type="text" class="form-control" id="remark" name="remark"
+                                    <input type="text" class="form-control" value="<?php echo $product['remark'];?>" id="remark" name="remark"
                                         placeholder="เพิ่มหมายเหตุ">
                                 </div>
 
@@ -126,8 +140,7 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <button type="submit" name="submit" id="submit"
                                         class="btn btn-light btn-round px-5"><i class="icon-lock"></i> บันทึก</button>
-                                    
-                                        <button class="btn btn-light btn-round px-5"><a
+                                    <button class="btn btn-light btn-round px-5"><a
                                             href="../../admin_dashboard/admin_panel.php">กลับหน้าหลัก</a>
                                     </button>
                                 </div>

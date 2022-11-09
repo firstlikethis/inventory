@@ -3,6 +3,10 @@
     $db = new db;
     $db->admin_empty();
     include('./admin_includes/head.php');
+
+    
+
+
 ?>
 
 <body class="bg-theme bg-theme1">

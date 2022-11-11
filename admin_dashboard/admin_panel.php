@@ -12,7 +12,6 @@
 <body class="bg-theme bg-theme1">
     <?php 
       include('./admin_includes/nav.php');
-      include('./admin_includes/sidebar.php');
       include('./admin_includes/topbar.php');
     ?>
     <div class="clearfix">

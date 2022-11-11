@@ -40,9 +40,8 @@
       </li>
 
       <li>
-        <a href="calendar.html">
+        <a href=".\admin_includes\calendar.php">
           <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-          <small class="badge float-right badge-light">New</small>
         </a>
       </li>
 

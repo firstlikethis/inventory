@@ -126,9 +126,9 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <button type="submit" name="submit" id="submit"
                                         class="btn btn-light btn-round px-5"><i class="icon-lock"></i> บันทึก</button>
-                                    
+
                                         <button class="btn btn-light btn-round px-5"><a
-                                            href="../../admin_dashboard/admin_panel.php">กลับหน้าหลัก</a>
+                                            href="../../admin_dashboard/admin_panel.php">กลับหน้าหลัก <?php  ;?></a>
                                     </button>
                                 </div>
                             </form>

@@ -33,7 +33,7 @@
       </li>
 
       <li>
-        <a href="calendar.html">
+        <a href=".\calendar.php">
           <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
           <small class="badge float-right badge-light">New</small>
         </a>

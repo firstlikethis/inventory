@@ -7,7 +7,7 @@ class db
     private $ip = "localhost";
     private $user = "root";
     private $pass = "";
-    private $db = "tb";
+    private $db = "inventory";
 
     public $conn;
 

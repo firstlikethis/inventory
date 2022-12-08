@@ -9,7 +9,7 @@
  <!--Start sidebar-wrapper-->
    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
      <div class="brand-logo">
-      <a href="index.html">
+      <a href="admin_panel.php">
        <h5 class="logo-text"> Admin</h5>
      </a>
    </div>

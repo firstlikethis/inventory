@@ -9,15 +9,15 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="./template/add_product.php">Add New</a>
-                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                            <a class="dropdown-item" href="?act=excel">Export->Excel</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="javascript:void();">Separated link</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="table-responsive">
+                
+            <div class="table-responsive text-center">
                 <table class="table align-items-center table-flush table-borderless">
                     <thead>
                         <tr>

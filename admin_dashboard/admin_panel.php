@@ -4,9 +4,14 @@
     $db->admin_empty();
     include('./admin_includes/head.php');
 
-    
-
-
+    if(isset($_GET['act'])){
+        if($_GET['act']== 'excel'){
+            header("Content-Type: application/xls");
+            header("Content-Disposition: attachment; filename=export.xls");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+        }
+    }
 ?>
 
 <body class="bg-theme bg-theme1">
@@ -31,4 +36,5 @@
     </div>
     <!--End wrapper-->
 </body>
+
 </html>

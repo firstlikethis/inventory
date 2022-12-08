@@ -29,6 +29,34 @@ if (isset($_POST['submit'])) {
         $db->alert("ชื่อผู้ใช้ ถูกใช้งานแล้ว!");
     }
 }
+
+    if(isset($_POST["submit_file"]))
+    {
+    $file = $_FILES["file"]["tmp_name"];
+    $file_open = fopen($file,"r");
+    while(($csv = fgetcsv($file_open, 1000, ",")) !== false)
+    {
+    $name_product = $csv[0];
+    $serial_number = $csv[1];
+    $ip_address = $csv[2];
+    $mac_address = $csv[3];
+    $boxlan = $csv[4];
+    $departments = $csv[5];
+    $name_users = $csv[6];
+    $floors = $csv[7];
+    $remark = $csv[8];
+    $insert = $db->insert("tb_product","name_product,serial_number,ip_address,mac_address,boxlan,departments,name_users,floors,remark","'$name_product','$serial_number','$ip_address','$mac_address','$boxlan','$departments','$name_users','$floors','$remark'");
+    }
+    }
+
+    if(isset($_GET['act'])){
+        if($_GET['act']== 'excel'){
+            header("Content-Type: application/xls");
+            header("Content-Disposition: attachment; filename=export.xls");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +98,7 @@ if (isset($_POST['submit'])) {
                 <div class="col-lg-9">
                     <div class="card">
                         <div class="card-body">
+
                             <div class="card-title text-center"><i class="ri-home-4-line">
                                     <h4>เพิ่มครุภัณฑ์</h4>
                                 </i></div>
@@ -127,11 +156,19 @@ if (isset($_POST['submit'])) {
                                     <button type="submit" name="submit" id="submit"
                                         class="btn btn-light btn-round px-5"><i class="icon-lock"></i> บันทึก</button>
 
-                                        <button class="btn btn-light btn-round px-5"><a
+                                    <button class="btn btn-light btn-round px-5"><a
                                             href="../../admin_dashboard/admin_panel.php">กลับหน้าหลัก <?php  ;?></a>
                                     </button>
                                 </div>
                             </form>
+
+
+                            <form method="post" action="add_product.php" enctype="multipart/form-data">
+                                <input type="file" class="btn btn-light btn-round px-5" name="file" />
+                                <input type="submit" name="submit_file" id="submit_file"
+                                    class="btn btn-light btn-round px-5" value="Submit" />
+                            </form>
+
                         </div>
                     </div>
                 </div>

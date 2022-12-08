@@ -1,8 +1,7 @@
 <?php
-    include('../includes/head.php');
-    require('../controller/config.php');
+    require('../../controller/config.php');
     $db = new db;
-    $db->id_not();
+    $db->admin_empty();
 
     if(isset($_POST['submit']))
     {
@@ -20,7 +19,7 @@
             if($insert)
             {
                 $db->alert("สมัครสมาชิกเสร็จสิ้น!");
-                $db->header("../index.php");
+                $db->header("../admin_panel.php");
             }
             else
             {
@@ -36,9 +35,19 @@
 
     
 ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inventory</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../lib/css/style.css">
 
 
-<body class="img js-fullheight" style="background-image: url(../lib/images/bg.jpg);">
+</head>
+
+<body class="img js-fullheight" style="background-image: url(../../lib/images/bg.jpg);">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
@@ -84,7 +93,7 @@
                         </form>
                         <br>
                             <div>
-                                <a href="../index.php"><button type="submit"
+                                <a href="../admin_panel.php"><button type="submit"
                                         class="form-control btn btn-primary submit px-3">กลับหน้าหลัก</button></a>
                             </div>
                     </div>

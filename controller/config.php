@@ -7,7 +7,7 @@ class db
     private $ip = "localhost";
     private $user = "root";
     private $pass = "";
-    private $db = "inventory";
+    private $db = "inven2";
 
     public $conn;
 
@@ -18,7 +18,7 @@ class db
     private function db_connect()
     {
         $this->conn = new mysqli($this->ip, $this->user, $this->pass, $this->db);
-        $this->conn->query('SET NAMES UTF8');
+        $this->conn->query("SET NAMES UTF8");
         return $this->conn;
     }
     public function select($table)

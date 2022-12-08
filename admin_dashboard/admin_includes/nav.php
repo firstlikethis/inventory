@@ -58,16 +58,10 @@
       </li>
 
        <li>
-        <a href="register.html" target="_blank">
+        <a href="./template/register.php">
           <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
         </a>
       </li>
-	  
-      <li class="sidebar-header">LABELS</li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a></li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i> <span>Warning</span></a></li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a></li>
-
     </ul>
    
    </div>

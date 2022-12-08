@@ -89,9 +89,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <div class="w-50 text-md-right">
-                                    <a href="./modules/register.php" target="_blank" style="color: #fff">สมัครสมาชิก</a>
-                                </div>
+                               
                             </div>
                         
                         </form>

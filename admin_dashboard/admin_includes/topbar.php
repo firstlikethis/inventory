@@ -7,11 +7,11 @@
                     <i class="icon-menu menu-icon"></i>
                 </a>
             </li>
-
+  
             <?php
       if (!empty($_GET['search'])) {
         $search = $_GET['search'];
-        $se_product = $db->select_where('tb_product', "'name_product','serial_number' LIKE '%$search%'");
+        $se_product = $db->select_where('tb_product',"name_product LIKE '%$search%' OR serial_number LIKE '%$search%' OR ip_address LIKE '%$search%' OR mac_address LIKE '%$search%' OR boxlan LIKE '%$search%' OR departments LIKE '%$search%' OR name_users LIKE '%$search%' OR floors LIKE '%$search%'");
     } else {
         $se_product = $db->select('tb_product');
     }

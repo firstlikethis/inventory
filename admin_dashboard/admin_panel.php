@@ -3,7 +3,6 @@
     $db = new db;
     $db->admin_empty();
     include('./admin_includes/head.php');
-
     if(isset($_GET['act'])){
         if($_GET['act']== 'excel'){
             header("Content-Type: application/xls");

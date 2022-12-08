@@ -19,10 +19,10 @@ if (isset($_POST['submit'])) {
     if ($check->num_rows == 0) {
         $insert = $db->insert("tb_product","name_product,serial_number,ip_address,mac_address,boxlan,departments,name_users,floors,remark","'$name_product','$serial_number','$ip_address','$mac_address','$boxlan','$departments','$name_users','$floors','$remark'");
         if ($insert) {
-            $db->alert("สมัครสมาชิกเสร็จสิ้น!");
+            $db->alert("เพิ่มรายการสำเร็จ!");
             $db->header("add_product.php");
         } else {
-            $db->alert("เกิดข้อผิดพลาดในการสมัครสมาชิก!");
+            $db->alert("เกิดข้อผิดพลาดในการเพิ่มครุภัณฑ์!");
             $db->header("add_product.php");
         }
     } else {

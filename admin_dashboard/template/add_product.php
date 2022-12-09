@@ -5,15 +5,15 @@ $db->admin_empty();
 
 
 if (isset($_POST['submit'])) {
-    $name_product = $_POST['name_product'];
-    $serial_number = $_POST['serial_number'];
-    $ip_address = $_POST['ip_address'];
-    $mac_address = $_POST['mac_address'];
-    $boxlan = $_POST['boxlan'];
-    $departments = $_POST['departments'];
-    $name_users = $_POST['name_users'];
-    $floors = $_POST['floors'];
-    $remark = $_POST['remark'];
+    $name_product = $db->encode($_POST['name_product']);['name_product'];
+    $serial_number = $db->encode($_POST['serial_number']);['serial_number'];
+    $ip_address = $db->encode($_POST['ip_address']);['ip_address'];
+    $mac_address = $db->encode($_POST['mac_address']);['mac_address'];
+    $boxlan = $db->encode($_POST['boxlan']);['boxlan'];
+    $departments = $db->encode($_POST['departments']);['departments'];
+    $name_users = $db->encode($_POST['name_users']);['name_users'];
+    $floors = $db->encode($_POST['floors']);['floors'];
+    $remark = $db->encode($_POST['remark']);['remark'];
 
     $check = $db->select_where("tb_product", "name_product = '$name_product'");
     if ($check->num_rows == 0) {
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     } else {
         $db->alert("ชื่อผู้ใช้ ถูกใช้งานแล้ว!");
     }
-}
+    }
 
     if(isset($_POST["submit_file"]))
     {
@@ -36,6 +36,7 @@ if (isset($_POST['submit'])) {
     $file_open = fopen($file,"r");
     while(($csv = fgetcsv($file_open, 1000, ",")) !== false)
     {
+    
     $name_product = $csv[0];
     $serial_number = $csv[1];
     $ip_address = $csv[2];
@@ -46,7 +47,9 @@ if (isset($_POST['submit'])) {
     $floors = $csv[7];
     $remark = $csv[8];
     $insert = $db->insert("tb_product","name_product,serial_number,ip_address,mac_address,boxlan,departments,name_users,floors,remark","'$name_product','$serial_number','$ip_address','$mac_address','$boxlan','$departments','$name_users','$floors','$remark'");
-    }
+    
+
+    }    
     }
 
     if(isset($_GET['act'])){
@@ -57,6 +60,8 @@ if (isset($_POST['submit'])) {
             header("Expires: 0");
         }
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -157,7 +162,7 @@ if (isset($_POST['submit'])) {
                                         class="btn btn-light btn-round px-5"><i class="icon-lock"></i> บันทึก</button>
 
                                     <button class="btn btn-light btn-round px-5"><a
-                                            href="../../admin_dashboard/admin_panel.php">กลับหน้าหลัก <?php  ;?></a>
+                                            href="../../admin_dashboard/admin_panel.php"><i class="icon-lock"></i>กลับหน้าหลัก</a>
                                     </button>
                                 </div>
                             </form>

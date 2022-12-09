@@ -5,12 +5,12 @@
 
     if(isset($_POST['submit']))
     {
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $department = $_POST['department'];
-        $email = $_POST['email'];
+        $firstname = $db->encode($_POST['firstname']);['firstname'];
+        $lastname = $db->encode($_POST['lastname']);['lastname'];
+        $department = $db->encode($_POST['department']);['department'];
+        $email = $db->encode($_POST['email']);['email'];
         $password = $db->encode($_POST['password']);['password'];
-        $tel = $_POST['tel'];
+        $tel = $db->encode($_POST['tel']);['tel'];
 
         $check = $db->select_where("tb_members","firstname = '$firstname'");
         if($check->num_rows == 0)

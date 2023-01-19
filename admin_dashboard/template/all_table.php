@@ -38,15 +38,30 @@ $db->admin_empty();
     <!-- Custom Style-->
     <link href="../../lib/assets/css/app-style.css" rel="stylesheet" />
 
+    <style>
+        .button-but{
+            display: flex;
+            /* border: 1px solid red; */
+            justify-content: right;
+
+
+            padding-right:1%;
+            padding-top:1%;
+            /* align-items:center; */
+            padding-bottom: 0.1%;
+        }
+    </style>
 </head>
 
 <body class="bg-theme bg-theme1">
     <div class="row">
         <div class="col-12 col-lg-12">
             <div class="card">
-                <button class="btn btn-light btn-round px-5"><a href="../../admin_dashboard/admin_panel.php"><i
-                            class="icon-lock"></i>กลับหน้าหลัก</a>
-                </button>
+                <div class="button-but">
+                    <button class="btn btn-light btn-round px-5"><a href="../../admin_dashboard/admin_panel.php"><i
+                                class="icon-lock"></i>กลับหน้าหลัก</a>
+                    </button>
+                </div>
                 <div class="card-header text-center">
                     Product
                 </div>
